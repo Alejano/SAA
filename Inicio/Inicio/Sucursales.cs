@@ -18,7 +18,8 @@ namespace Inicio
         int menu = 0;
         int ID_Sucursal = 0;
         int ID_Gerente = 9999999;
-        
+        int ID_SucursalA = 0;
+        string SN = "";
 
 
         public Sucursales()
@@ -33,8 +34,10 @@ namespace Inicio
 
         private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            button4.Show();
+            button1.Hide();
+            pictureBox2.Hide();
             menu = 1;
-
             Menus();
         }
 
@@ -105,7 +108,7 @@ namespace Inicio
 
         private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Enter))
+            if (!(char.IsLetter(e.KeyChar)) && (e.KeyChar != (char)Keys.Back) && (e.KeyChar != (char)Keys.Enter) && (e.KeyChar != (char)Keys.Space))
             {
 
                 e.Handled = true;
@@ -150,7 +153,7 @@ namespace Inicio
             // MessageBox.Show("creando Administrador");
             BsonDocument sucursal = new BsonDocument
                   {//informacion del alumno
-                    {"Id_Suc", ID_Sucursal},
+                    {"Id_Suc", Convert.ToString(ID_Sucursal)},
                     {"NombreS",textBox1.Text }
                     
                   };
@@ -158,8 +161,8 @@ namespace Inicio
 
             BsonDocument gerente = new BsonDocument
                   {//informacion del alumno
-                    {"Id_Gerente",ID_Gerente},
-                    {"Id_Suc", ID_Sucursal},
+                    {"Id_Gerente",Convert.ToString(ID_Gerente)},
+                    {"Id_Suc",Convert.ToString(ID_Sucursal)},
                     {"NombreG",textBox2.Text },
                     {"APaterno",textBox3.Text },
                     {"AMaterno",textBox4.Text },
@@ -341,13 +344,15 @@ namespace Inicio
 
         private void eliminarToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            pictureBox1.Hide();
+            button6.Show();    
             int max = 0;
             menu = 2;           
             Actualizar2();
             max = dataGridView2.Rows.GetLastRow(0);
             numericUpDown1.Maximum = max;
 
-            MessageBox.Show(Convert.ToString(max));
+           // MessageBox.Show(Convert.ToString(max));
             if (max == 0) { MessageBox.Show("No ha agregado ningna sucursal");
             }
             else
@@ -450,6 +455,7 @@ namespace Inicio
                 }
                 
             }
+          
         }
 
         private void numericUpDown1_KeyPress(object sender, KeyPressEventArgs e)
@@ -460,6 +466,161 @@ namespace Inicio
         private void button7_Click(object sender, EventArgs e)
         {
 
+        }
+        public int turno = 0;
+        private void editarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            numericUpDown1.Value = 0;
+            textBox9.Clear();
+            turno = 0;
+            turnox();
+        }
+        int id_S = 0;
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            ID_SucursalA = Convert.ToInt16(numericUpDown1.Value);
+            SN = textBox9.Text;
+
+            id_S = Convert.ToInt16(numericUpDown1.Value);
+
+            turno = 1;
+            turnox();
+            ActualizarT();
+
+        }
+        void turnox() {
+            if (turno == 0)
+            {
+                numericUpDown1.Value = 0;
+                textBox9.Clear();
+                menu = 2;
+                button6.Hide();
+                pictureBox1.Show();
+                int max = 0;
+                menu = 2;
+                Actualizar2();
+                max = dataGridView2.Rows.GetLastRow(0);
+                numericUpDown1.Maximum = max;
+
+                //MessageBox.Show(Convert.ToString(max));
+                if (max == 0)
+                {
+                    MessageBox.Show("No ha agregado ningna sucursal");
+                }
+                else
+                {
+                    Menus();
+                }
+            }
+            if (turno == 1)
+            {
+                menu = 1;
+                Menus();
+                button1.Show();
+                button4.Hide();
+                button5.Hide();
+                pictureBox2.Show();
+
+
+            }
+        }
+        void ActualizarT()
+        {
+            //MessageBox.Show(Convert.ToString(ID_SucursalA));
+            //MessageBox.Show(SN);
+            MongoClient client = new MongoClient("mongodb://Directivo:zaqxsw123@ds123410.mlab.com:23410/saa");
+            var db = client.GetDatabase("saa");
+            var usuarios = db.GetCollection<BsonDocument>("Gerente");
+
+
+            var filter_id = Builders<BsonDocument>.Filter.Eq("Id_Suc",Convert.ToString(ID_SucursalA));
+            var entity = usuarios.Find(filter_id).FirstOrDefault();
+
+            if (entity == null)
+            {
+                MessageBox.Show("Id no existe", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                turnox();
+            }
+            else
+            {
+
+                String DtAdmjson = entity.ToString();
+                char[] separador = { '"', '"' };
+                DatosAdm = DtAdmjson.Split(separador);
+
+                // dataGridView1.Rows.Add(DatosAdm[7], DatosAdm[11], DatosAdm[19]);
+                //MessageBox.Show(DatosAdm[7]);
+                //MessageBox.Show( DatosAdm[11]);
+                textBox1.Text =SN;
+                textBox2.Text = DatosAdm[15];
+                textBox3.Text = DatosAdm[19];
+                textBox4.Text = DatosAdm[23];
+                textBox5.Text = DatosAdm[27];
+
+                //MessageBox.Show(DatosAdm[11]);
+                //MessageBox.Show(DatosAdm[19]);
+
+
+            }
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            BsonDocument sucursal = new BsonDocument
+                  {//informacion del alumno
+                    {"Id_Suc", DatosAdm[11]},
+                    {"NombreS",textBox1.Text}
+
+                  };
+            BsonDocument Datossucursal = sucursal;
+
+            BsonDocument gerente = new BsonDocument
+                  {//informacion del alumno
+                    {"Id_Gerente",DatosAdm[7]},
+                    {"Id_Suc", DatosAdm[11]},
+                    {"NombreG",textBox2.Text },
+                    {"APaterno", textBox3.Text },
+                    {"AMaterno",textBox4.Text},
+                    {"Usuario",textBox5.Text },
+                    {"Contraseña",textBox6.Text },
+
+                  };
+            BsonDocument Datosgerentegerente = gerente;
+            int longitud = textBox6.Text.Length;
+            if (textBox7.Text == textBox6.Text)
+            {
+
+                if (longitud >= 6)
+                {
+
+                    if (MessageBox.Show("Seguro que desea Actulizar?", "Actulizar",
+       MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+       == DialogResult.Yes)
+                    {
+                        MongoClient client = new MongoClient("mongodb://Directivo:zaqxsw123@ds123410.mlab.com:23410/saa");
+                        var db = client.GetDatabase("saa");
+                        var usuarios = db.GetCollection<BsonDocument>("Sucursal");
+                        usuarios.DeleteOneAsync(Builders<BsonDocument>.Filter.Eq("Id_Suc", DatosAdm[11]));
+                        usuarios.InsertOne(Datossucursal);
+
+                        var usuarios2 = db.GetCollection<BsonDocument>("Gerente");
+                        usuarios2.DeleteOneAsync(Builders<BsonDocument>.Filter.Eq("Id_Gerente", DatosAdm[7]));
+                        usuarios2.InsertOne(Datosgerentegerente);
+
+                        Actualizar();
+                        Actualizar2();
+                        turno = 0;
+                        turnox();
+                    }
+                }
+
+            }
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
