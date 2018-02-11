@@ -251,6 +251,7 @@ namespace Inicio
             textBox5.Clear();
             textBox6.Clear();
             textBox7.Clear();
+            numericUpDown1.Value = 0;
         }
 
         void Actualizar() {
@@ -465,7 +466,10 @@ namespace Inicio
 
         private void button7_Click(object sender, EventArgs e)
         {
-
+            limpiarDatos();
+            menu = 0;
+            Actualizar();
+            Menus();
         }
         public int turno = 0;
         private void editarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -621,6 +625,14 @@ namespace Inicio
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            limpiarDatos();
+            menu = 0;
+            Actualizar();
+            Menus();
         }
     }
 }
