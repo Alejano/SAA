@@ -145,6 +145,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.dataGridView1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Inicio";
             this.Load += new System.EventHandler(this.Inicio_Load);
             this.groupBox1.ResumeLayout(false);

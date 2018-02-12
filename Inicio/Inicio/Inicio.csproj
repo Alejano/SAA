@@ -67,6 +67,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdmAutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdmAutos.Designer.cs">
+      <DependentUpon>AdmAutos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,9 @@
     <Compile Include="Sucursales.Designer.cs">
       <DependentUpon>Sucursales.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AdmAutos.resx">
+      <DependentUpon>AdmAutos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
     </EmbeddedResource>

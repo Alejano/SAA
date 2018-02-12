@@ -26,6 +26,10 @@ namespace Inicio
 
         private void button1_Click(object sender, EventArgs e)
         {
+            inicioAdm A = new inicioAdm();
+            A.Show(this);
+            this.Hide();
+            /*
             if (textBox1.Text != "" && textBox2.Text != "")
             {
 
@@ -96,7 +100,7 @@ namespace Inicio
                         MessageBox.Show("Necesita ingresar su contraseña");
                     }
                 }
-            }
+            }*/
         }
 
         private void label1_Click(object sender, EventArgs e)

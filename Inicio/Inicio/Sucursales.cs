@@ -224,6 +224,7 @@ namespace Inicio
                               MongoClient client = new MongoClient("mongodb://Directivo:zaqxsw123@ds123410.mlab.com:23410/saa");
                               var db = client.GetDatabase("saa");
                               var usuarios = db.GetCollection<BsonDocument>("Sucursal");
+                              
 
                               usuarios.InsertOne(Datossucursal);
                               var usuario = db.GetCollection<BsonDocument>("Gerente");

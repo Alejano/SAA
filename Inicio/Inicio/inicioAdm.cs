@@ -20,7 +20,9 @@ namespace Inicio
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            AdmAutos aa = new AdmAutos(); ;
+            aa.Show(this);
+            this.Hide();
         }
 
         private void button3_Click(object sender, EventArgs e)
