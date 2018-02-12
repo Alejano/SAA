@@ -17,6 +17,7 @@ namespace Inicio
         public static string usu = "";
         bool u = false;
         bool c = false;
+        public static string UsuarioI = "";
         
 
         public Inicio()
@@ -26,10 +27,7 @@ namespace Inicio
 
         private void button1_Click(object sender, EventArgs e)
         {
-            inicioAdm A = new inicioAdm();
-            A.Show(this);
-            this.Hide();
-            /*
+            
             if (textBox1.Text != "" && textBox2.Text != "")
             {
 
@@ -54,9 +52,9 @@ namespace Inicio
 
                             if (Valor3 == "1")
                             {
-
-                                inicioAdm A = new inicioAdm();
-                                A.Show(this);
+                                UsuarioI = Valor3;
+                                inicioAdm Adm = new inicioAdm();
+                                Adm.Show(this);
                                 this.Hide();
                                 usu = Valor;
                                 textBox1.Clear();
@@ -68,12 +66,28 @@ namespace Inicio
                             {
                                 if (Valor3 == "2")
                                 {
-                                    //aqui va la pagina nivel 2
+                                    UsuarioI = Valor3;
+                                    inicioAdm Adm = new inicioAdm();
+                                    Adm.Show(this);
+                                    this.Hide();
                                     usu = Valor;
-                                    Hide();
+                                   
                                     textBox1.Clear();
                                     textBox2.Clear();
-                                };
+                                }
+                                else {
+                                    if (Valor3 == "3")
+                                    {
+                                        Oficina of = new Oficina();
+                                        of.Show(this);
+                                        this.Hide();
+
+                                        usu = Valor;
+                                       
+                                        textBox1.Clear();
+                                        textBox2.Clear();
+                                    };
+                                }
 
                             }
                         }
@@ -100,7 +114,7 @@ namespace Inicio
                         MessageBox.Show("Necesita ingresar su contraseña");
                     }
                 }
-            }*/
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -148,6 +162,25 @@ namespace Inicio
 
         }
 
-        
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Oficina of = new Oficina();
+            of.Show(this);
+            this.Hide();
+
+            //Chicas para cerrar secion y regresar a este formulario ocupen esto...
+            //this.Owner.Show();
+            //this.Close();
+        }
     }
 }

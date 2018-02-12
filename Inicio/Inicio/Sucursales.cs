@@ -166,11 +166,20 @@ namespace Inicio
                     {"NombreG",textBox2.Text },
                     {"APaterno",textBox3.Text },
                     {"AMaterno",textBox4.Text },
-                    {"Usuario",textBox5.Text },
+                     {"Usuario",textBox5.Text },
                     {"Contraseña",textBox6.Text },
 
                   };
             BsonDocument Datosgerentegerente = gerente;
+
+            BsonDocument Usuario = new BsonDocument
+                  {//informacion del alumno
+                    {"Id_Adm",Convert.ToString(ID_Gerente)},
+                    {"Usuario",textBox5.Text },
+                    {"Contraseña",textBox6.Text },
+                    {"Nivel","2" }
+                  };
+            BsonDocument DatosUsuario = Usuario;
 
 
             int longitud = textBox6.Text.Length;
@@ -223,15 +232,16 @@ namespace Inicio
                         {
                               MongoClient client = new MongoClient("mongodb://Directivo:zaqxsw123@ds123410.mlab.com:23410/saa");
                               var db = client.GetDatabase("saa");
-                              var usuarios = db.GetCollection<BsonDocument>("Sucursal");
-                              
 
+                              var usuarios = db.GetCollection<BsonDocument>("Sucursal");                              
                               usuarios.InsertOne(Datossucursal);
-                              var usuario = db.GetCollection<BsonDocument>("Gerente");
 
+                              var usuario = db.GetCollection<BsonDocument>("Gerente");
                               usuario.InsertOne(Datosgerentegerente);
-                              
-                           
+
+                            var usuario2 = db.GetCollection<BsonDocument>("Admin");
+                            usuario2.InsertOne(DatosUsuario);
+
                             limpiarDatos();
                             Actualizar();
                         }
@@ -400,35 +410,57 @@ namespace Inicio
         {
            
         }
-
+        public static int IDB = 0;
         private void button6_Click(object sender, EventArgs e)
         {
-            int IDB=0;
+         
             if (MessageBox.Show("Seguro que desea Eliminar?", "Eliminar",
        MessageBoxButtons.YesNo, MessageBoxIcon.Question)
        == DialogResult.Yes)
             {
-                
+                IDB = 0;
+                busrU();
+                MessageBox.Show(Convert.ToString(IDB)+ "antes de sacar");
                 IDB = Convert.ToInt16(numericUpDown1.Value);
+                MessageBox.Show(Convert.ToString(IDB) + "despues de sacar");
                 MongoClient client = new MongoClient("mongodb://Directivo:zaqxsw123@ds123410.mlab.com:23410/saa");
                 var db = client.GetDatabase("saa");
-                var usuarios = db.GetCollection<BsonDocument>("Sucursal");
 
-                usuarios.DeleteOneAsync(Builders<BsonDocument>.Filter.Eq("Id_Suc", IDB));
+                var usuarios = db.GetCollection<BsonDocument>("Sucursal");
+                usuarios.DeleteOneAsync(Builders<BsonDocument>.Filter.Eq("Id_Suc", Convert.ToString(IDB)));
+                MessageBox.Show(Convert.ToString(IDB) + "del Sucursal");
 
                 var usuarios2 = db.GetCollection<BsonDocument>("Gerente");
+                usuarios2.DeleteOneAsync(Builders<BsonDocument>.Filter.Eq("Id_Suc", Convert.ToString(IDB)));
+                MessageBox.Show(Convert.ToString(IDB) + "del gerente");
 
-                usuarios2.DeleteOneAsync(Builders<BsonDocument>.Filter.Eq("Id_Suc", IDB));
-
-               
                 Actualizar2();
                 limpiarDatos();
             }
         }
+        string usu = "";
+        void busrU()
+        {
+            MongoClient client = new MongoClient("mongodb://Directivo:zaqxsw123@ds123410.mlab.com:23410/saa");
+            var db = client.GetDatabase("saa");
+            var usuarios = db.GetCollection<BsonDocument>("Gerente");
 
-        
+            var documento = Builders<BsonDocument>.Filter.Eq("Id_Suc", Convert.ToString(numericUpDown1.Value));
+            var Busqueda = usuarios.Find<BsonDocument>(documento).FirstOrDefault();          
+           usu = Busqueda["Id_Gerente"].ToString();
 
-        
+
+            var usuarios3 = db.GetCollection<BsonDocument>("Admin");
+            usuarios3.DeleteOneAsync(Builders<BsonDocument>.Filter.Eq("Id_Adm", usu));
+            MessageBox.Show(usu + "del adm");
+
+            //MessageBox.Show(usu);
+            //de esta forma saco el valor que yo quiera
+        }
+
+
+
+
 
         private void numericUpDown1_ValueChanged(object sender, EventArgs e)
         {
@@ -587,11 +619,21 @@ namespace Inicio
                     {"NombreG",textBox2.Text },
                     {"APaterno", textBox3.Text },
                     {"AMaterno",textBox4.Text},
-                    {"Usuario",textBox5.Text },
+                     {"Usuario",textBox5.Text },
                     {"Contraseña",textBox6.Text },
 
                   };
             BsonDocument Datosgerentegerente = gerente;
+
+            BsonDocument Usuario = new BsonDocument
+                  {//informacion del alumno
+                    {"Id_Adm",Convert.ToString(ID_Gerente)},
+                    {"Usuario",textBox5.Text },
+                    {"Contraseña",textBox6.Text },
+                    {"Nivel","2" }
+                  };
+            BsonDocument DatosUsuario = Usuario;
+
             int longitud = textBox6.Text.Length;
             if (textBox7.Text == textBox6.Text)
             {
@@ -612,6 +654,10 @@ namespace Inicio
                         var usuarios2 = db.GetCollection<BsonDocument>("Gerente");
                         usuarios2.DeleteOneAsync(Builders<BsonDocument>.Filter.Eq("Id_Gerente", DatosAdm[7]));
                         usuarios2.InsertOne(Datosgerentegerente);
+
+                        var usuarios3 = db.GetCollection<BsonDocument>("Admin");
+                        usuarios3.DeleteOneAsync(Builders<BsonDocument>.Filter.Eq("Id_Adm", DatosAdm[7]));
+                        usuarios3.InsertOne(Datosgerentegerente);
 
                         Actualizar();
                         Actualizar2();

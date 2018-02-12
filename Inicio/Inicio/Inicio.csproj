@@ -73,6 +73,12 @@
     <Compile Include="AdmAutos.Designer.cs">
       <DependentUpon>AdmAutos.cs</DependentUpon>
     </Compile>
+    <Compile Include="AdmUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdmUsuarios.Designer.cs">
+      <DependentUpon>AdmUsuarios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Inicio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,9 @@
     </Compile>
     <EmbeddedResource Include="AdmAutos.resx">
       <DependentUpon>AdmAutos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdmUsuarios.resx">
+      <DependentUpon>AdmUsuarios.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Inicio.resx">
       <DependentUpon>Inicio.cs</DependentUpon>
