@@ -68,6 +68,8 @@
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Sucursal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button6 = new System.Windows.Forms.Button();
+            this.ID_Au = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown5)).BeginInit();
@@ -84,18 +86,18 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.button2);
-            this.panel1.Location = new System.Drawing.Point(506, 26);
+            this.panel1.Location = new System.Drawing.Point(566, 26);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(200, 391);
+            this.panel1.Size = new System.Drawing.Size(140, 391);
             this.panel1.TabIndex = 5;
             // 
             // button2
             // 
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.button2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(23, 14);
+            this.button2.Location = new System.Drawing.Point(5, 14);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(154, 41);
+            this.button2.Size = new System.Drawing.Size(130, 41);
             this.button2.TabIndex = 2;
             this.button2.Text = "Inicio";
             this.button2.UseVisualStyleBackColor = true;
@@ -129,7 +131,7 @@
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(200, 26);
+            this.groupBox1.Location = new System.Drawing.Point(259, 26);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(300, 367);
             this.groupBox1.TabIndex = 11;
@@ -155,7 +157,6 @@
             0,
             0});
             this.numericUpDown5.Name = "numericUpDown5";
-            this.numericUpDown5.ReadOnly = true;
             this.numericUpDown5.Size = new System.Drawing.Size(37, 20);
             this.numericUpDown5.TabIndex = 29;
             this.numericUpDown5.ValueChanged += new System.EventHandler(this.numericUpDown5_ValueChanged);
@@ -440,11 +441,18 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 28);
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID_Au,
+            this.Modelo});
+            this.dataGridView1.Location = new System.Drawing.Point(13, 28);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(182, 302);
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.Size = new System.Drawing.Size(240, 302);
             this.dataGridView1.TabIndex = 13;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // dataGridView2
             // 
@@ -478,6 +486,18 @@
             this.button6.Text = "Actualizar";
             this.button6.UseVisualStyleBackColor = true;
             this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // ID_Au
+            // 
+            this.ID_Au.HeaderText = "ID_Au";
+            this.ID_Au.Name = "ID_Au";
+            this.ID_Au.ReadOnly = true;
+            // 
+            // Modelo
+            // 
+            this.Modelo.HeaderText = "Modelo";
+            this.Modelo.Name = "Modelo";
+            this.Modelo.ReadOnly = true;
             // 
             // AdmAutos
             // 
@@ -554,5 +574,7 @@
         private System.Windows.Forms.NumericUpDown numericUpDown5;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID_Au;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Modelo;
     }
 }

@@ -195,6 +195,7 @@ namespace Inicio
             Actualizar();
             dataGridView2.Hide();
             BuscarIDAuto();
+
         }
         void Actualizar()
         {
@@ -208,7 +209,16 @@ namespace Inicio
             dataGridView2.Rows.Add(Convert.ToString(song["Id_Suc"]), Convert.ToString(song["NombreS"]))
             );
 
-            
+            dataGridView1.Rows.Clear();
+
+            MongoClient client2 = new MongoClient("mongodb://Directivo:zaqxsw123@ds123410.mlab.com:23410/saa");
+            var db2 = client.GetDatabase("saa");
+            var usuarios2 = db.GetCollection<BsonDocument>("Auto");
+
+            usuarios2.AsQueryable<BsonDocument>().ToList().ForEach(song =>
+            dataGridView1.Rows.Add(Convert.ToString(song["Id_Auto"]), Convert.ToString(song["Modelo"]))
+            );
+
         }
 
         private void agregarToolStripMenuItem_Click(object sender, EventArgs e)
@@ -412,6 +422,11 @@ namespace Inicio
             limpiar();
             menu = 0;
             Menu();
+
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }
