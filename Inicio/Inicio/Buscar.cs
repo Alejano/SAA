@@ -29,7 +29,17 @@ namespace Inicio
 
         private void Buscar_Load(object sender, EventArgs e)
         {
+            tabControl1.Hide();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dataGridView1.Hide();
+            button1.Hide();
+            tabControl1.Show();
             
+
+           
         }
     }
 }
