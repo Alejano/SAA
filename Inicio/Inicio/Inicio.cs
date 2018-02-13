@@ -182,5 +182,11 @@ namespace Inicio
             //this.Owner.Show();
             //this.Close();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Buscar bus = new Buscar();
+            bus.Show();
+        }
     }
 }
