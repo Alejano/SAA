@@ -178,7 +178,7 @@ namespace Inicio
             of.Show(this);
             this.Hide();
 
-            //Chicas para cerrar secion y regresar a este formulario ocupen esto...
+            //Chicas para cerrar sesion y regresar a este formulario ocupen esto...
             //this.Owner.Show();
             //this.Close();
         }
