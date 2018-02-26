@@ -458,7 +458,7 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID_Au,
             this.Modelo});
-            this.dataGridView1.Location = new System.Drawing.Point(13, 28);
+            this.dataGridView1.Location = new System.Drawing.Point(14, 28);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(240, 302);
