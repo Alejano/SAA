@@ -29,8 +29,18 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Matricula = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sucursal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.nPlazas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Maletero = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EdadMinima = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.textBox6 = new System.Windows.Forms.TextBox();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -43,12 +53,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox8 = new System.Windows.Forms.TextBox();
             this.textBox9 = new System.Windows.Forms.TextBox();
@@ -63,6 +67,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.textBox12 = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.textBox13 = new System.Windows.Forms.TextBox();
             this.textBox14 = new System.Windows.Forms.TextBox();
             this.textBox15 = new System.Windows.Forms.TextBox();
@@ -77,6 +82,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.textBox18 = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.textBox19 = new System.Windows.Forms.TextBox();
             this.textBox20 = new System.Windows.Forms.TextBox();
             this.textBox21 = new System.Windows.Forms.TextBox();
@@ -91,22 +97,16 @@
             this.button5 = new System.Windows.Forms.Button();
             this.textBox24 = new System.Windows.Forms.TextBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.Matricula = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sucursal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Marca = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Modelo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nPlazas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Maletero = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EdadMinima = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             this.SuspendLayout();
             // 
@@ -126,6 +126,41 @@
             this.dataGridView1.Size = new System.Drawing.Size(740, 184);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick_1);
+            // 
+            // Matricula
+            // 
+            this.Matricula.HeaderText = "Matricula";
+            this.Matricula.Name = "Matricula";
+            // 
+            // Sucursal
+            // 
+            this.Sucursal.HeaderText = "Sucursal";
+            this.Sucursal.Name = "Sucursal";
+            // 
+            // Marca
+            // 
+            this.Marca.HeaderText = "Marca";
+            this.Marca.Name = "Marca";
+            // 
+            // Modelo
+            // 
+            this.Modelo.HeaderText = "Modelo";
+            this.Modelo.Name = "Modelo";
+            // 
+            // nPlazas
+            // 
+            this.nPlazas.HeaderText = "nPlazas";
+            this.nPlazas.Name = "nPlazas";
+            // 
+            // Maletero
+            // 
+            this.Maletero.HeaderText = "Maletero";
+            this.Maletero.Name = "Maletero";
+            // 
+            // EdadMinima
+            // 
+            this.EdadMinima.HeaderText = "EdadMinima";
+            this.EdadMinima.Name = "EdadMinima";
             // 
             // tabControl1
             // 
@@ -163,10 +198,35 @@
             this.tabPage1.Text = "Matricula";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // textBox6
+            // 
+            this.textBox6.Location = new System.Drawing.Point(321, 167);
+            this.textBox6.Name = "textBox6";
+            this.textBox6.ReadOnly = true;
+            this.textBox6.Size = new System.Drawing.Size(100, 20);
+            this.textBox6.TabIndex = 13;
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(321, 141);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.ReadOnly = true;
+            this.textBox5.Size = new System.Drawing.Size(100, 20);
+            this.textBox5.TabIndex = 12;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(321, 113);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.ReadOnly = true;
+            this.textBox4.Size = new System.Drawing.Size(100, 20);
+            this.textBox4.TabIndex = 11;
+            // 
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(321, 87);
             this.textBox3.Name = "textBox3";
+            this.textBox3.ReadOnly = true;
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 10;
             // 
@@ -174,6 +234,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(321, 61);
             this.textBox2.Name = "textBox2";
+            this.textBox2.ReadOnly = true;
             this.textBox2.Size = new System.Drawing.Size(100, 20);
             this.textBox2.TabIndex = 9;
             // 
@@ -228,6 +289,7 @@
             this.pictureBox1.Location = new System.Drawing.Point(9, 51);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(204, 151);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
@@ -276,89 +338,10 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(735, 261);
+            this.tabPage2.Size = new System.Drawing.Size(693, 261);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Modelo";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.textBox13);
-            this.tabPage3.Controls.Add(this.textBox14);
-            this.tabPage3.Controls.Add(this.textBox15);
-            this.tabPage3.Controls.Add(this.textBox16);
-            this.tabPage3.Controls.Add(this.textBox17);
-            this.tabPage3.Controls.Add(this.label13);
-            this.tabPage3.Controls.Add(this.label14);
-            this.tabPage3.Controls.Add(this.label15);
-            this.tabPage3.Controls.Add(this.label16);
-            this.tabPage3.Controls.Add(this.label17);
-            this.tabPage3.Controls.Add(this.pictureBox3);
-            this.tabPage3.Controls.Add(this.button4);
-            this.tabPage3.Controls.Add(this.textBox18);
-            this.tabPage3.Controls.Add(this.label18);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(735, 261);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Marca";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.textBox19);
-            this.tabPage4.Controls.Add(this.textBox20);
-            this.tabPage4.Controls.Add(this.textBox21);
-            this.tabPage4.Controls.Add(this.textBox22);
-            this.tabPage4.Controls.Add(this.textBox23);
-            this.tabPage4.Controls.Add(this.label19);
-            this.tabPage4.Controls.Add(this.label20);
-            this.tabPage4.Controls.Add(this.label21);
-            this.tabPage4.Controls.Add(this.label22);
-            this.tabPage4.Controls.Add(this.label23);
-            this.tabPage4.Controls.Add(this.pictureBox4);
-            this.tabPage4.Controls.Add(this.button5);
-            this.tabPage4.Controls.Add(this.textBox24);
-            this.tabPage4.Controls.Add(this.label24);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(693, 261);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Tamaño maletero";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            this.tabPage4.Click += new System.EventHandler(this.tabPage4_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(667, 33);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Buscar por";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(321, 113);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 11;
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(321, 141);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 12;
-            // 
-            // textBox6
-            // 
-            this.textBox6.Location = new System.Drawing.Point(321, 167);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 13;
             // 
             // textBox7
             // 
@@ -473,6 +456,30 @@
             this.label12.TabIndex = 14;
             this.label12.Text = "Marca";
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.textBox13);
+            this.tabPage3.Controls.Add(this.textBox14);
+            this.tabPage3.Controls.Add(this.textBox15);
+            this.tabPage3.Controls.Add(this.textBox16);
+            this.tabPage3.Controls.Add(this.textBox17);
+            this.tabPage3.Controls.Add(this.label13);
+            this.tabPage3.Controls.Add(this.label14);
+            this.tabPage3.Controls.Add(this.label15);
+            this.tabPage3.Controls.Add(this.label16);
+            this.tabPage3.Controls.Add(this.label17);
+            this.tabPage3.Controls.Add(this.pictureBox3);
+            this.tabPage3.Controls.Add(this.button4);
+            this.tabPage3.Controls.Add(this.textBox18);
+            this.tabPage3.Controls.Add(this.label18);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(693, 261);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Marca";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
             // textBox13
             // 
             this.textBox13.Location = new System.Drawing.Point(328, 169);
@@ -585,6 +592,30 @@
             this.label18.Size = new System.Drawing.Size(37, 13);
             this.label18.TabIndex = 14;
             this.label18.Text = "Marca";
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.textBox19);
+            this.tabPage4.Controls.Add(this.textBox20);
+            this.tabPage4.Controls.Add(this.textBox21);
+            this.tabPage4.Controls.Add(this.textBox22);
+            this.tabPage4.Controls.Add(this.textBox23);
+            this.tabPage4.Controls.Add(this.label19);
+            this.tabPage4.Controls.Add(this.label20);
+            this.tabPage4.Controls.Add(this.label21);
+            this.tabPage4.Controls.Add(this.label22);
+            this.tabPage4.Controls.Add(this.label23);
+            this.tabPage4.Controls.Add(this.pictureBox4);
+            this.tabPage4.Controls.Add(this.button5);
+            this.tabPage4.Controls.Add(this.textBox24);
+            this.tabPage4.Controls.Add(this.label24);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Size = new System.Drawing.Size(693, 261);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Tamaño maletero";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            this.tabPage4.Click += new System.EventHandler(this.tabPage4_Click);
             // 
             // textBox19
             // 
@@ -700,40 +731,15 @@
             this.label24.TabIndex = 14;
             this.label24.Text = "Marca";
             // 
-            // Matricula
+            // button1
             // 
-            this.Matricula.HeaderText = "Matricula";
-            this.Matricula.Name = "Matricula";
-            // 
-            // Sucursal
-            // 
-            this.Sucursal.HeaderText = "Sucursal";
-            this.Sucursal.Name = "Sucursal";
-            // 
-            // Marca
-            // 
-            this.Marca.HeaderText = "Marca";
-            this.Marca.Name = "Marca";
-            // 
-            // Modelo
-            // 
-            this.Modelo.HeaderText = "Modelo";
-            this.Modelo.Name = "Modelo";
-            // 
-            // nPlazas
-            // 
-            this.nPlazas.HeaderText = "nPlazas";
-            this.nPlazas.Name = "nPlazas";
-            // 
-            // Maletero
-            // 
-            this.Maletero.HeaderText = "Maletero";
-            this.Maletero.Name = "Maletero";
-            // 
-            // EdadMinima
-            // 
-            this.EdadMinima.HeaderText = "EdadMinima";
-            this.EdadMinima.Name = "EdadMinima";
+            this.button1.Location = new System.Drawing.Point(667, 33);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "Buscar por";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Buscar
             // 
@@ -753,12 +759,12 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             this.ResumeLayout(false);
 

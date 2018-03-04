@@ -17,6 +17,8 @@ namespace Inicio
     {
         string ID_A = "";
         string[] DatosAuto = new string[99];
+        public static byte[] imagenb;
+        public static Bitmap bm = null;
 
         public Buscar()
         {
@@ -35,6 +37,41 @@ namespace Inicio
             Convert.ToString(equis["Modelo"]), Convert.ToString(equis["N_Plazas"]), Convert.ToString(equis["C_Maletero"]),
             Convert.ToString(equis["E_min"])));
         }
+
+        void buscarimg()
+        {
+
+
+            MongoClient client = new MongoClient("mongodb://Directivo:zaqxsw123@ds123410.mlab.com:23410/saa");
+            var db = client.GetDatabase("saa");
+            var usuarios = db.GetCollection<BsonDocument>("Auto");
+
+
+            var filter_id = Builders<BsonDocument>.Filter.Eq("Id_Auto", ID_A);
+            var ultimo7 = usuarios.Find<BsonDocument>(filter_id).FirstOrDefault();
+            byte[] data = ultimo7["Foto"].AsBsonBinaryData.Bytes;
+            imagenb = data;
+            Convertir_Bytes_Imagen(imagenb);
+            ultimo7.Clear();
+        }
+        public static Image Convertir_Bytes_Imagen(byte[] bytes)
+        {
+            if (bytes == null) return null;
+            // MessageBox.Show("Convirtiendo byte a img :C");
+            MemoryStream ms = new MemoryStream(bytes);
+
+            try
+            {
+                bm = new Bitmap(ms);
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine(ex.Message);
+            }
+            return bm;
+
+        }
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
@@ -111,7 +148,12 @@ namespace Inicio
                     textBox4.Text = DatosAuto[15];
                     textBox5.Text = DatosAuto[11];
                     textBox6.Text = DatosAuto[39];
-                   
+                    buscarimg();
+                    pictureBox1.Image = bm;
+
+
+
+
                 }
             }
         }
