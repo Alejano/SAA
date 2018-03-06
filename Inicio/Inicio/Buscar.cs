@@ -16,6 +16,7 @@ namespace Inicio
     public partial class Buscar : Form
     {
         string ID_A = "";
+        string buscar = "";
         string[] DatosAuto = new string[99];
         public static byte[] imagenb;
         public static Bitmap bm = null;
@@ -48,6 +49,41 @@ namespace Inicio
 
 
             var filter_id = Builders<BsonDocument>.Filter.Eq("Id_Auto", ID_A);
+            var ultimo7 = usuarios.Find<BsonDocument>(filter_id).FirstOrDefault();
+            byte[] data = ultimo7["Foto"].AsBsonBinaryData.Bytes;
+            imagenb = data;
+            Convertir_Bytes_Imagen(imagenb);
+            ultimo7.Clear();
+        }
+
+        void buscarimgmodelo()
+        {
+            ID_A = textBox12.Text;
+
+            MongoClient client = new MongoClient("mongodb://Directivo:zaqxsw123@ds123410.mlab.com:23410/saa");
+            var db = client.GetDatabase("saa");
+            var usuarios = db.GetCollection<BsonDocument>("Auto");
+
+
+            var filter_id = Builders<BsonDocument>.Filter.Eq("Modelo", ID_A);
+            var ultimo7 = usuarios.Find<BsonDocument>(filter_id).FirstOrDefault();
+            byte[] data = ultimo7["Foto"].AsBsonBinaryData.Bytes;
+            imagenb = data;
+            Convertir_Bytes_Imagen(imagenb);
+            ultimo7.Clear();
+        }
+
+
+        void buscarimgmarca()
+        {
+            ID_A = textBox18.Text;
+
+            MongoClient client = new MongoClient("mongodb://Directivo:zaqxsw123@ds123410.mlab.com:23410/saa");
+            var db = client.GetDatabase("saa");
+            var usuarios = db.GetCollection<BsonDocument>("Auto");
+
+
+            var filter_id = Builders<BsonDocument>.Filter.Eq("Marca", ID_A);
             var ultimo7 = usuarios.Find<BsonDocument>(filter_id).FirstOrDefault();
             byte[] data = ultimo7["Foto"].AsBsonBinaryData.Bytes;
             imagenb = data;
@@ -124,12 +160,7 @@ namespace Inicio
                 MessageBox.Show("Ingrese matricula");
             }
 
-            /*if ()
-            {
-                MessageBox.Show("Matricula invalida");
-            }*/
-
-            else
+           else
             {
                 MongoClient client = new MongoClient("mongodb://Directivo:zaqxsw123@ds123410.mlab.com:23410/saa");
                 var db = client.GetDatabase("saa");
@@ -175,6 +206,7 @@ namespace Inicio
 
         private void button3_Click(object sender, EventArgs e)
         {
+
             ID_A = textBox12.Text;
             int longitud = textBox12.Text.Length;
 
@@ -191,12 +223,6 @@ namespace Inicio
 
                 var filter_id = Builders<BsonDocument>.Filter.Eq("Modelo", ID_A);
                 var entity = usuarios.Find(filter_id).FirstOrDefault();
-                var ultimo7 = usuarios.Find<BsonDocument>(filter_id).FirstOrDefault();
-
-                byte[] data = ultimo7["Foto"].AsBsonBinaryData.Bytes;
-                imagenb = data;
-                Convertir_Bytes_Imagen(imagenb);
-                ultimo7.Clear();
 
 
                 if (entity == null)
@@ -209,18 +235,14 @@ namespace Inicio
                     char[] separador = { '"', '"' };
                     DatosAuto = DtAdmjson.Split(separador);
 
-                    textBox11.Text = DatosAuto[5];
-                    textBox10.Text = DatosAuto[10];
-                    textBox2.Text = DatosAuto[15];
+
+                    textBox11.Text = DatosAuto[11];
+                    textBox10.Text = DatosAuto[15];
                     textBox9.Text = DatosAuto[19];
                     textBox8.Text = DatosAuto[11];
                     textBox7.Text = DatosAuto[39];
-                    buscarimg();
-                    pictureBox1.Image = bm;
-
-
-              
-                    
+                    buscarimgmodelo();
+                    pictureBox2.Image = bm;
 
                 }
             }
@@ -229,6 +251,7 @@ namespace Inicio
         private void button3_KeyPress(object sender, KeyPressEventArgs e)
         {
 
+            
         }
 
         private void textBox12_KeyPress(object sender, KeyPressEventArgs e)
@@ -248,6 +271,51 @@ namespace Inicio
 
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+
+            ID_A = textBox18.Text;
+            int longitud = textBox18.Text.Length;
+
+            if (string.IsNullOrEmpty(textBox18.Text))
+            {
+                MessageBox.Show("Ingrese marca");
+            }
+
+            else
+            {
+                MongoClient client = new MongoClient("mongodb://Directivo:zaqxsw123@ds123410.mlab.com:23410/saa");
+                var db = client.GetDatabase("saa");
+                var usuarios = db.GetCollection<BsonDocument>("Auto");
+
+                var filter_id = Builders<BsonDocument>.Filter.Eq("Marca", ID_A);
+                var entity = usuarios.Find(filter_id).FirstOrDefault();
+
+
+                if (entity == null)
+                {
+                    MessageBox.Show("Marca no disponible", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    String DtAdmjson = entity.ToString();
+                    char[] separador = { '"', '"' };
+                    DatosAuto = DtAdmjson.Split(separador);
+
+
+                    textBox17.Text = DatosAuto[11];
+                    textBox16.Text = DatosAuto[15];
+                    textBox15.Text = DatosAuto[19];
+                    textBox14.Text = DatosAuto[11];
+                    textBox13.Text = DatosAuto[39];
+                    buscarimgmarca();
+                    pictureBox3.Image = bm;
+
+                }
+            }
 
         }
     }

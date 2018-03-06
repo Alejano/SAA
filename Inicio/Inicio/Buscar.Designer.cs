@@ -412,6 +412,7 @@
             this.pictureBox2.Location = new System.Drawing.Point(9, 54);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(204, 151);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 17;
             this.pictureBox2.TabStop = false;
             // 
@@ -429,6 +430,7 @@
             // textBox12
             // 
             this.textBox12.Location = new System.Drawing.Point(102, 13);
+            this.textBox12.MaxLength = 15;
             this.textBox12.Name = "textBox12";
             this.textBox12.Size = new System.Drawing.Size(100, 20);
             this.textBox12.TabIndex = 15;
@@ -549,9 +551,10 @@
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(16, 53);
+            this.pictureBox3.Location = new System.Drawing.Point(19, 63);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(204, 151);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 17;
             this.pictureBox3.TabStop = false;
             // 
@@ -563,6 +566,7 @@
             this.button4.TabIndex = 16;
             this.button4.Text = "Buscar";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // textBox18
             // 
@@ -689,6 +693,7 @@
             this.pictureBox4.Location = new System.Drawing.Point(7, 51);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(204, 151);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox4.TabIndex = 17;
             this.pictureBox4.TabStop = false;
             // 
