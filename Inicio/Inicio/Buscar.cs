@@ -93,9 +93,9 @@ namespace Inicio
             dataGridView1.Hide();
             button1.Hide();
             tabControl1.Show();
-            
 
-           
+
+
         }
 
         private void label6_Click(object sender, EventArgs e)
@@ -112,15 +112,23 @@ namespace Inicio
         {
 
         }
-       
+
         private void button2_Click(object sender, EventArgs e)
         {
+            
             ID_A = textBox1.Text;
+            int longitud = textBox1.Text.Length;
 
             if (string.IsNullOrEmpty(textBox1.Text))
             {
                 MessageBox.Show("Ingrese matricula");
             }
+
+            /*if ()
+            {
+                MessageBox.Show("Matricula invalida");
+            }*/
+
             else
             {
                 MongoClient client = new MongoClient("mongodb://Directivo:zaqxsw123@ds123410.mlab.com:23410/saa");
@@ -129,7 +137,7 @@ namespace Inicio
 
                 var filter_id = Builders<BsonDocument>.Filter.Eq("Id_Auto", ID_A);
                 var entity = usuarios.Find(filter_id).FirstOrDefault();
-                
+
 
                 if (entity == null)
                 {
@@ -141,21 +149,106 @@ namespace Inicio
                     char[] separador = { '"', '"' };
                     DatosAuto = DtAdmjson.Split(separador);
 
-                    
+
 
                     textBox2.Text = DatosAuto[15];
                     textBox3.Text = DatosAuto[19];
-                    textBox4.Text = DatosAuto[15];
+                    //textBox4.Text = DatosAuto[15];
                     textBox5.Text = DatosAuto[11];
                     textBox6.Text = DatosAuto[39];
                     buscarimg();
                     pictureBox1.Image = bm;
 
+                }
+            }
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            ID_A = textBox12.Text;
+            int longitud = textBox12.Text.Length;
+
+            if (string.IsNullOrEmpty(textBox12.Text))
+            {
+                MessageBox.Show("Ingrese modelo");
+            }
+
+            else
+            {
+                MongoClient client = new MongoClient("mongodb://Directivo:zaqxsw123@ds123410.mlab.com:23410/saa");
+                var db = client.GetDatabase("saa");
+                var usuarios = db.GetCollection<BsonDocument>("Auto");
+
+                var filter_id = Builders<BsonDocument>.Filter.Eq("Modelo", ID_A);
+                var entity = usuarios.Find(filter_id).FirstOrDefault();
+                var ultimo7 = usuarios.Find<BsonDocument>(filter_id).FirstOrDefault();
+
+                byte[] data = ultimo7["Foto"].AsBsonBinaryData.Bytes;
+                imagenb = data;
+                Convertir_Bytes_Imagen(imagenb);
+                ultimo7.Clear();
 
 
+                if (entity == null)
+                {
+                    MessageBox.Show("Modelo no disponible", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    String DtAdmjson = entity.ToString();
+                    char[] separador = { '"', '"' };
+                    DatosAuto = DtAdmjson.Split(separador);
+
+                    textBox11.Text = DatosAuto[5];
+                    textBox10.Text = DatosAuto[10];
+                    textBox2.Text = DatosAuto[15];
+                    textBox9.Text = DatosAuto[19];
+                    textBox8.Text = DatosAuto[11];
+                    textBox7.Text = DatosAuto[39];
+                    buscarimg();
+                    pictureBox1.Image = bm;
+
+
+              
+                    
 
                 }
             }
+        }
+
+        private void button3_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        private void textBox12_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           
+        }
+
+        private void textBox1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!(char.IsNumber(e.KeyChar)) && (e.KeyChar != (char)Keys.Back))
+            {
+                MessageBox.Show("Solo se permiten numeros", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                e.Handled = true;
+                return;
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

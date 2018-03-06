@@ -40,12 +40,10 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -168,22 +166,20 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Location = new System.Drawing.Point(23, 73);
+            this.tabControl1.Location = new System.Drawing.Point(12, 73);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(701, 287);
+            this.tabControl1.Size = new System.Drawing.Size(740, 287);
             this.tabControl1.TabIndex = 2;
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.textBox6);
             this.tabPage1.Controls.Add(this.textBox5);
-            this.tabPage1.Controls.Add(this.textBox4);
             this.tabPage1.Controls.Add(this.textBox3);
             this.tabPage1.Controls.Add(this.textBox2);
             this.tabPage1.Controls.Add(this.label6);
             this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.label1);
             this.tabPage1.Controls.Add(this.pictureBox1);
@@ -193,14 +189,14 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(693, 261);
+            this.tabPage1.Size = new System.Drawing.Size(732, 261);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Matricula";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // textBox6
             // 
-            this.textBox6.Location = new System.Drawing.Point(321, 167);
+            this.textBox6.Location = new System.Drawing.Point(321, 139);
             this.textBox6.Name = "textBox6";
             this.textBox6.ReadOnly = true;
             this.textBox6.Size = new System.Drawing.Size(100, 20);
@@ -208,19 +204,11 @@
             // 
             // textBox5
             // 
-            this.textBox5.Location = new System.Drawing.Point(321, 141);
+            this.textBox5.Location = new System.Drawing.Point(321, 113);
             this.textBox5.Name = "textBox5";
             this.textBox5.ReadOnly = true;
             this.textBox5.Size = new System.Drawing.Size(100, 20);
             this.textBox5.TabIndex = 12;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(321, 113);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.ReadOnly = true;
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 11;
             // 
             // textBox3
             // 
@@ -241,7 +229,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(237, 174);
+            this.label6.Location = new System.Drawing.Point(237, 146);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(67, 13);
             this.label6.TabIndex = 8;
@@ -251,20 +239,11 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(237, 148);
+            this.label5.Location = new System.Drawing.Point(237, 120);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(48, 13);
             this.label5.TabIndex = 7;
             this.label5.Text = "Sucursal";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(237, 120);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(39, 13);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Placas";
             // 
             // label3
             // 
@@ -306,9 +285,12 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(102, 10);
+            this.textBox1.MaxLength = 6;
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 1;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox1_KeyPress);
             // 
             // label2
             // 
@@ -338,7 +320,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(693, 261);
+            this.tabPage2.Size = new System.Drawing.Size(732, 261);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Modelo";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -401,18 +383,20 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(237, 123);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(39, 13);
+            this.label9.Size = new System.Drawing.Size(42, 13);
             this.label9.TabIndex = 20;
-            this.label9.Text = "Placas";
+            this.label9.Text = "Modelo";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(237, 97);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(42, 13);
+            this.label10.Size = new System.Drawing.Size(37, 13);
             this.label10.TabIndex = 19;
-            this.label10.Text = "Modelo";
+            this.label10.Text = "Marca";
+            this.label10.Click += new System.EventHandler(this.label10_Click);
             // 
             // label11
             // 
@@ -439,6 +423,8 @@
             this.button3.TabIndex = 16;
             this.button3.Text = "Buscar";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.button3.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.button3_KeyPress);
             // 
             // textBox12
             // 
@@ -446,15 +432,16 @@
             this.textBox12.Name = "textBox12";
             this.textBox12.Size = new System.Drawing.Size(100, 20);
             this.textBox12.TabIndex = 15;
+            this.textBox12.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox12_KeyPress);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Location = new System.Drawing.Point(237, 71);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(37, 13);
+            this.label12.Size = new System.Drawing.Size(50, 13);
             this.label12.TabIndex = 14;
-            this.label12.Text = "Marca";
+            this.label12.Text = "Matricula";
             // 
             // tabPage3
             // 
@@ -475,7 +462,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(693, 261);
+            this.tabPage3.Size = new System.Drawing.Size(732, 261);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Marca";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -538,18 +525,18 @@
             this.label15.AutoSize = true;
             this.label15.Location = new System.Drawing.Point(244, 122);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(39, 13);
+            this.label15.Size = new System.Drawing.Size(42, 13);
             this.label15.TabIndex = 20;
-            this.label15.Text = "Placas";
+            this.label15.Text = "Modelo";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Location = new System.Drawing.Point(244, 96);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(42, 13);
+            this.label16.Size = new System.Drawing.Size(37, 13);
             this.label16.TabIndex = 19;
-            this.label16.Text = "Modelo";
+            this.label16.Text = "Marca";
             // 
             // label17
             // 
@@ -589,9 +576,9 @@
             this.label18.AutoSize = true;
             this.label18.Location = new System.Drawing.Point(244, 70);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(37, 13);
+            this.label18.Size = new System.Drawing.Size(50, 13);
             this.label18.TabIndex = 14;
-            this.label18.Text = "Marca";
+            this.label18.Text = "Matricula";
             // 
             // tabPage4
             // 
@@ -611,7 +598,7 @@
             this.tabPage4.Controls.Add(this.label24);
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Size = new System.Drawing.Size(693, 261);
+            this.tabPage4.Size = new System.Drawing.Size(732, 261);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Tamaño maletero";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -675,18 +662,18 @@
             this.label21.AutoSize = true;
             this.label21.Location = new System.Drawing.Point(235, 120);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(39, 13);
+            this.label21.Size = new System.Drawing.Size(42, 13);
             this.label21.TabIndex = 20;
-            this.label21.Text = "Placas";
+            this.label21.Text = "Modelo";
             // 
             // label22
             // 
             this.label22.AutoSize = true;
             this.label22.Location = new System.Drawing.Point(235, 94);
             this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(42, 13);
+            this.label22.Size = new System.Drawing.Size(37, 13);
             this.label22.TabIndex = 19;
-            this.label22.Text = "Modelo";
+            this.label22.Text = "Marca";
             // 
             // label23
             // 
@@ -727,9 +714,9 @@
             this.label24.AutoSize = true;
             this.label24.Location = new System.Drawing.Point(235, 68);
             this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(37, 13);
+            this.label24.Size = new System.Drawing.Size(50, 13);
             this.label24.TabIndex = 14;
-            this.label24.Text = "Marca";
+            this.label24.Text = "Matricula";
             // 
             // button1
             // 
@@ -785,13 +772,11 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox6;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.TextBox textBox8;
