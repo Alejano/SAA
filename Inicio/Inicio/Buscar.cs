@@ -318,5 +318,11 @@ namespace Inicio
             }
 
         }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Rentar rentar = new Rentar();
+            rentar.Show();
+        }
     }
 }

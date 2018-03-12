@@ -105,6 +105,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rentar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Rentar.Designer.cs">
+      <DependentUpon>Rentar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Sucursales.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -138,6 +144,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Rentar.resx">
+      <DependentUpon>Rentar.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Sucursales.resx">
       <DependentUpon>Sucursales.cs</DependentUpon>
     </EmbeddedResource>
