@@ -39,7 +39,7 @@ namespace Inicio
             Convert.ToString(equis["E_min"])));
         }
 
-        void buscarimg()
+      /*  void buscarimg()
         {
 
 
@@ -55,6 +55,7 @@ namespace Inicio
             Convertir_Bytes_Imagen(imagenb);
             ultimo7.Clear();
         }
+        
 
         void buscarimgmodelo()
         {
@@ -74,7 +75,7 @@ namespace Inicio
         }
 
 
-        void buscarimgmarca()
+       /* void buscarimgmarca()
         {
             ID_A = textBox18.Text;
 
@@ -107,6 +108,7 @@ namespace Inicio
             return bm;
 
         }
+        */
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -151,48 +153,82 @@ namespace Inicio
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
-            ID_A = textBox1.Text;
-            int longitud = textBox1.Text.Length;
+            //jalas los datos de dataview
 
-            if (string.IsNullOrEmpty(textBox1.Text))
+            foreach (DataGridViewRow Row in dataGridView1.Rows)
             {
-                MessageBox.Show("Ingrese matricula");
-            }
 
-           else
-            {
-                MongoClient client = new MongoClient("mongodb://Directivo:zaqxsw123@ds123410.mlab.com:23410/saa");
-                var db = client.GetDatabase("saa");
-                var usuarios = db.GetCollection<BsonDocument>("Auto");
+                String strFila = Row.Index.ToString();
+                string Valor = Convert.ToString(Row.Cells[0].Value);
+                //MessageBox.Show(Valor);
+                if (Valor == Convert.ToString(textBox1.Text))
 
-                var filter_id = Builders<BsonDocument>.Filter.Eq("Id_Auto", ID_A);
-                var entity = usuarios.Find(filter_id).FirstOrDefault();
-
-
-                if (entity == null)
                 {
-                    MessageBox.Show("Id no existe", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+
+
+                    foreach (DataGridViewRow Row2 in dataGridView1.Rows)
+                    {
+
+                        String strFila2 = Row2.Index.ToString();
+                        string Valor2 = Convert.ToString(Row.Cells[1].Value);
+                        // MessageBox.Show(Valor2);
+                        if (Valor == Convert.ToString(textBox1.Text))
+                        {
+
+                            textBox2.Text = Valor2;
+                        }
+
+                    }
                 }
+
+                //termina jalara datos de dataview
+
+                /*
+                ID_A = textBox1.Text;
+                int longitud = textBox1.Text.Length;
+
+                if (string.IsNullOrEmpty(textBox1.Text))
+                {
+                    MessageBox.Show("Ingrese matricula");
+                }
+
                 else
                 {
-                    String DtAdmjson = entity.ToString();
-                    char[] separador = { '"', '"' };
-                    DatosAuto = DtAdmjson.Split(separador);
+                    MongoClient client = new MongoClient("mongodb://Directivo:zaqxsw123@ds123410.mlab.com:23410/saa");
+                    var db = client.GetDatabase("saa");
+                    var usuarios = db.GetCollection<BsonDocument>("Auto");
+
+                    var filter_id = Builders<BsonDocument>.Filter.Eq("Id_Auto", ID_A);
+                    var entity = usuarios.Find(filter_id).FirstOrDefault();
+
+
+                    if (entity == null)
+                    {
+                        MessageBox.Show("Id no existe", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                    else
+                    {
+                        String DtAdmjson = entity.ToString();
+                        char[] separador = { '"', '"' };
+                        DatosAuto = DtAdmjson.Split(separador);
 
 
 
-                    textBox2.Text = DatosAuto[15];
-                    textBox3.Text = DatosAuto[19];
-                    //textBox4.Text = DatosAuto[15];
-                    textBox5.Text = DatosAuto[11];
-                    textBox6.Text = DatosAuto[39];
-                    buscarimg();
-                    pictureBox1.Image = bm;
+                        textBox2.Text = DatosAuto[15];
+                        textBox3.Text = DatosAuto[19];
+                        //textBox4.Text = DatosAuto[15];
+                        textBox5.Text = DatosAuto[11];
+                        textBox6.Text = DatosAuto[39];
+                        buscarimg();
+                        pictureBox1.Image = bm;
 
+                    }
                 }
+                */
             }
         }
+
+    
 
         private void label9_Click(object sender, EventArgs e)
         {
@@ -241,7 +277,7 @@ namespace Inicio
                     textBox9.Text = DatosAuto[19];
                     textBox8.Text = DatosAuto[11];
                     textBox7.Text = DatosAuto[39];
-                    buscarimgmodelo();
+                    //buscarimgmodelo();
                     pictureBox2.Image = bm;
 
                 }
@@ -311,7 +347,7 @@ namespace Inicio
                     textBox15.Text = DatosAuto[19];
                     textBox14.Text = DatosAuto[11];
                     textBox13.Text = DatosAuto[39];
-                    buscarimgmarca();
+                    //buscarimgmarca();
                     pictureBox3.Image = bm;
 
                 }
