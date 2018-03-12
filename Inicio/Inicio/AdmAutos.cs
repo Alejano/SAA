@@ -397,6 +397,8 @@ namespace Inicio
 
         private void button6_Click(object sender, EventArgs e)
         {
+
+
             eliminarA();
 
             BsonDocument Auto = new BsonDocument

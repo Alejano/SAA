@@ -778,6 +778,42 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(321, 191);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(85, 30);
+            this.button6.TabIndex = 14;
+            this.button6.Text = "RENTAME";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(337, 213);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(75, 23);
+            this.button7.TabIndex = 28;
+            this.button7.Text = "RENTAME";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(339, 209);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(75, 23);
+            this.button8.TabIndex = 28;
+            this.button8.Text = "RENTAME";
+            this.button8.UseVisualStyleBackColor = true;
+            // 
+            // button9
+            // 
+            this.button9.Location = new System.Drawing.Point(330, 212);
+            this.button9.Name = "button9";
+            this.button9.Size = new System.Drawing.Size(75, 23);
+            this.button9.TabIndex = 28;
+            this.button9.Text = "RENTAME";
+            this.button9.UseVisualStyleBackColor = true;
+            // 
             // Buscar
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
